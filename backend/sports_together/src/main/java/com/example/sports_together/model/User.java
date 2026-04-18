@@ -1,3 +1,4 @@
+package com.example.sports_together.model;
 @Entity @Data @Table(name = "users")
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
