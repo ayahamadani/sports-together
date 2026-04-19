@@ -1,6 +1,3 @@
-// Base Axios instance pointing at the Spring Boot backend
-// Install axios: npm install axios
-
 const BASE_URL = 'http://localhost:8080/api';
 
 async function request(method, path, body = null) {

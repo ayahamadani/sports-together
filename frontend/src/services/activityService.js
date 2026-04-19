@@ -20,7 +20,6 @@ export function getUserLocation() {
 }
 
 export async function fetchWeather(lat, lon, date) {
-  // open-meteo free API – no key needed
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,weathercode&timezone=auto&start_date=${date}&end_date=${date}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error('Weather fetch failed');
