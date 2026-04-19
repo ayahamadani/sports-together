@@ -14,22 +14,38 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = async (email, password) => {
-    // Replace with real API call: const res = await api.post('/auth/login', { email, password });
-    const mockUser = { id: 1, name: 'Alex Martin', email, avatar: 'AM', level: 'Intermediate' };
-    localStorage.setItem('st_user', JSON.stringify(mockUser));
-    setUser(mockUser);
-    return mockUser;
+    const res = await api.login(email, password);
+    // Backend returns { token, user }
+    localStorage.setItem('st_token', res.token);
+    const u = {
+      id: res.user.id,
+      name: res.user.name,
+      email: res.user.email,
+      avatar: res.user.name.slice(0, 2).toUpperCase(),
+      level: res.user.fitnessLevel || 'Beginner',
+    };
+    localStorage.setItem('st_user', JSON.stringify(u));
+    setUser(u);
+    return u;
   };
 
   const register = async (data) => {
-    // Replace with: const res = await api.post('/auth/register', data);
-    const mockUser = { id: 1, name: data.name, email: data.email, avatar: data.name.slice(0,2).toUpperCase(), level: 'Beginner' };
-    localStorage.setItem('st_user', JSON.stringify(mockUser));
-    setUser(mockUser);
-    return mockUser;
+    const res = await api.register(data);
+    localStorage.setItem('st_token', res.token);
+    const u = {
+      id: res.user.id,
+      name: res.user.name,
+      email: res.user.email,
+      avatar: res.user.name.slice(0, 2).toUpperCase(),
+      level: res.user.fitnessLevel || 'Beginner',
+    };
+    localStorage.setItem('st_user', JSON.stringify(u));
+    setUser(u);
+    return u;
   };
 
   const logout = () => {
+    localStorage.removeItem('st_token');
     localStorage.removeItem('st_user');
     setUser(null);
   };
