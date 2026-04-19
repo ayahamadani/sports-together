@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import Sidebar from './components/Spinner';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
@@ -8,6 +7,8 @@ import LogActivityPage from './pages/LogActivityPage';
 import FriendsPage from './pages/FriendsPage';
 import ChallengesPage from './pages/ChallengesPage';
 import ProfilePage from './pages/ProfilePage';
+import Sidebar from './components/Sidebar';
+import spinner from './components/Spinner';
 import './index.css';
 
 function AppInner() {

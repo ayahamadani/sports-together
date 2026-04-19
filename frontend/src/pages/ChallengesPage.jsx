@@ -4,7 +4,6 @@ import Spinner, { ErrorMessage } from '../components/Spinner';
 import { sportColors } from '../services/mockData';
 
 const rankColors = ['#ffc107', '#8b949e', '#FF5733'];
-const rankEmoji = ['🥇', '🥈', '🥉'];
 
 export default function ChallengesPage() {
   const [challenges, setChallenges] = useState([]);
@@ -161,12 +160,6 @@ export default function ChallengesPage() {
             ) : (
               leaderboard.map((entry, i) => (
                 <div key={entry.rank} className={`leaderboard-row top-${entry.rank}`}>
-                  <div className="rank-badge" style={{
-                    background: i < 3 ? `${rankColors[i]}20` : 'var(--dark-4)',
-                    color: i < 3 ? rankColors[i] : 'var(--text-muted)'
-                  }}>
-                    {i < 3 ? rankEmoji[i] : entry.rank}
-                  </div>
                   <div className="avatar" style={{ background: 'rgba(0,200,150,0.15)', color: 'var(--primary)', fontSize: 12 }}>
                     {entry.avatar}
                   </div>

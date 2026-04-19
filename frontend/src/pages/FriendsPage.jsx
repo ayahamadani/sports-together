@@ -60,6 +60,7 @@ export default function FriendsPage() {
     setFriends((prev) => prev.map((f) => f.id === userId ? { ...f, status: 'friend' } : f));
   };
 
+
   const declineRequest = async (userId) => {
     await api.declineFriendRequest(userId);
     setFriends((prev) => prev.filter((f) => f.id !== userId));
